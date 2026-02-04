@@ -1,33 +1,43 @@
 import React from 'react';
+import { CiStar } from "react-icons/ci";
+import { Link } from 'react-router';
 
 const Book = ({ book }) => {
-    const { bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing }=book;
+    const { bookId, bookName, image, rating, category, tags, publisher, yearOfPublishing } = book;
     return (
-        <div className="card border-1 border-cyan-900 shadow-sm">
-            <figure>
-                <img className='w-80 h-55 rounded-b-3xl shadow-2xl'
-                    src={image}
-                    alt="Shoes" />
-            </figure>
-            <div className="card-body">
-                <h2 className="text-3xl">
-                    {bookName}
-                </h2>
-               
-                    <div className='grid grid-cols-2 items-center'>
-                    <p className='w-5/6'>{author}</p>
-                    <div className="badge bg-[#15bf09] w-15 h-4 p-2">{category}</div>
+       <Link to={`/bookDetails/${bookId}`}>
+            <div className="card border-1 border-cyan-900 p-6 shadow-sm">
+                <figure className='bg-gray-800 w-2/3 mx-auto rounded p-4'>
+                    <img className='h-[166px] shadow-2xl'
+                        src={image}
+                        alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <div className='flex'>
+                        {
+                            tags.map((tag, index) => <p key={index}
+                                className='text-[#0def42]'
+                            >{tag}</p>)
+                        }
                     </div>
-          
-                <div className="card-actions">
-                    {
-                        tags.map((tag, index) =><div key={index} className="badge badge-outline">{tag}</div>
-                    )
-                    }
-                    <p className="text-sm rounded-2xl">{rating}</p>
+                    <h2 className="card-title">
+                        {bookName}
+                        <div className="badge badge-secondary">{yearOfPublishing}</div>
+                    </h2>
+
+                    <div className=''>
+                        <p className='w-5/6'>by: {publisher}</p>
+                    </div>
+
+                    <div className="card-actions justify-between border-t-2 border-dashed p-2">
+                        <div className="badge badge-outline">{category}</div>
+                        <div className="badge badge-outline">{rating} <CiStar /> </div>
+
+
+                    </div>
                 </div>
             </div>
-        </div>
+       </Link>
     );
 };
 

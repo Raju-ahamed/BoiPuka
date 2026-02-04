@@ -11,6 +11,7 @@ const Home = () => {
             <Banner></Banner>
             <Suspense fallback={<h1>loading</h1>}>
                 <Books
+                
                     allData={allData}
                 ></Books>
             </Suspense>
