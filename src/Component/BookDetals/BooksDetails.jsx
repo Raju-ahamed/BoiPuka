@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { setToLocalStorage } from './LocalStorage';
+import { wishSetToLocal } from './WishlistLoacls';
 
 const BooksDetails = () => {
     const idstr = useParams();
@@ -19,7 +20,9 @@ const handleLocalStorageSetUp=(id)=>{
     setToLocalStorage(id);
 }
 
-
+const handleSetWish = (id)=>{
+    wishSetToLocal(id);
+}
     return (
         <div className='w-11/12 mx-auto flex justify-between m-10'>
             <div className='w-1/2'>
@@ -48,7 +51,7 @@ const handleLocalStorageSetUp=(id)=>{
 
                 <div className='flex gap-2'>
                     <button onClick={()=>handleLocalStorageSetUp(id)} className='btn btn-success'>Read</button>
-                    <button className='btn btn-accent'>Wishlist</button>
+                    <button onClick={() => handleSetWish(id)} className='btn btn-accent'>Wishlist</button>
                 </div>
             </div>
         </div>

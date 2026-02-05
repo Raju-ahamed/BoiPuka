@@ -4,7 +4,7 @@ const getFromLocalStorage = () => {
         return JSON.parse(getLocal);
     }
     else {
-        return []
+        return [];
     }
 }
 const setToLocalStorage = (id) => {
@@ -19,6 +19,11 @@ const setToLocalStorage = (id) => {
     }
 }
 
+
+export {
+    setToLocalStorage,
+    getFromLocalStorage
+}
 
 
 
@@ -88,15 +93,6 @@ const setToLocalStorage = (id) => {
 
 
 
-
-
-
-
-
-
-export {
-    setToLocalStorage
-}
 
 
 
